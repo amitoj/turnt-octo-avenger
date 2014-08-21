@@ -40,4 +40,13 @@ public class CarDaoImpl implements CarDao {
 		return false;
 	}
 
+	@Override
+	public boolean updateCar(Car updatedCar) {
+		if (carRepository.containsKey(updatedCar.getId())) {
+			carRepository.put(updatedCar.getId(), updatedCar);
+			return true;
+		}
+		return false;
+	}
+
 }
