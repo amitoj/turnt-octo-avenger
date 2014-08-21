@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateful;
@@ -13,6 +14,8 @@ import assignment.model.Car;
 
 @Stateful
 public class CarDaoImpl implements CarDao {
+
+    private static Logger logger = Logger.getLogger(CarDaoImpl.class.getName());
 
 	private Map<Integer, Car> carRepository;
 
@@ -23,12 +26,17 @@ public class CarDaoImpl implements CarDao {
 	
 	@Override
 	public void createCar(Car car) {
+		logger.info("Before : carRepository.values().size() = " + carRepository.values().size());
 		carRepository.put(car.getId(), car);
+		logger.info("After : carRepository.values().size() = " + carRepository.values().size());
+
 	}
 
 	@Override
 	public List<Car> getCars() {
+		logger.info("carRepository.values().size() = " + carRepository.values().size());
 		List<Car> carList = new ArrayList<Car>(carRepository.values());
+		logger.info("carList.size() = " + carList.size());
 		return Collections.unmodifiableList(carList);
 	}
 

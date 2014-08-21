@@ -107,4 +107,13 @@ public class Car {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Car [id=" + id + ", make=" + make + ", model=" + model
+				+ ", yearOfManufacture=" + yearOfManufacture + ", entryDate="
+				+ entryDate + "]";
+	}
+	
+	
+
 }
