@@ -9,9 +9,11 @@ import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateful;
+import javax.enterprise.context.ApplicationScoped;
 
 import assignment.model.Car;
 
+@ApplicationScoped
 @Stateful
 public class CarDaoImpl implements CarDao {
 

@@ -12,6 +12,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
@@ -34,10 +35,10 @@ public class CarService {
 	@Path("/car/{id}")
 	public Response createCar(
 			@PathParam("id") int id,
-			@FormParam("make") String make,
-			@FormParam("model") String model,
-			@FormParam("yearOfManufacture") int yearOfManufacture,
-			@FormParam("entryDate") String entryDate) {
+			@QueryParam("make") String make,
+			@QueryParam("model") String model,
+			@QueryParam("yearOfManufacture") int yearOfManufacture,
+			@QueryParam("entryDate") String entryDate) {
 		
 		Car car = new Car(id, make, model, yearOfManufacture, entryDate);
 		logger.info("Creating new Car " + car);
@@ -72,10 +73,10 @@ public class CarService {
 	@Path("/car/{id}")
 	public Response updateCar(
 			@PathParam("id") int id,
-			@FormParam("make") String make,
-			@FormParam("model") String model,
-			@FormParam("yearOfManufacture") int yearOfManufacture,
-			@FormParam("entryDate") String entryDate) {
+			@QueryParam("make") String make,
+			@QueryParam("model") String model,
+			@QueryParam("yearOfManufacture") int yearOfManufacture,
+			@QueryParam("entryDate") String entryDate) {
 		
 		Car updatedCar = new Car(id, make, model, yearOfManufacture, entryDate);
 		if (carDao.updateCar(updatedCar)) {
