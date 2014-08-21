@@ -11,6 +11,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import assignment.dao.CarDao;
 import assignment.model.Car;
@@ -39,13 +40,21 @@ public class CarService {
 		return Response.ok().build();
 	}
 	
-	
 	@GET
 	@Path("car/")
 	public List<Car> getCarList() {
 		List<Car> carList = carDao.getCars();
 		return carList;
 	}
-	
+
+	@DELETE
+	@Path("car/{id}")
+	public Response removeCar(@PathParam("id") int id) {
+		if (carDao.removeCar(id))
+			return Response.ok().build();
+		else
+			return Response.status(Status.NOT_FOUND).build();
+	}
+
 	
 }

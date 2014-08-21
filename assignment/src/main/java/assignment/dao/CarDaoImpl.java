@@ -26,11 +26,18 @@ public class CarDaoImpl implements CarDao {
 
 	@Override
 	public List<Car> getCars() {
-		
 		return (List<Car>) carRepository.values();
-		
-		
 		//return Collections.unmodifiableList(carRepository.values());
+	}
+
+	@Override
+	public boolean removeCar(int id) {
+		if (carRepository.containsKey(id)) {
+			carRepository.remove(id);
+			return true;
+		}
+		
+		return false;
 	}
 
 }
