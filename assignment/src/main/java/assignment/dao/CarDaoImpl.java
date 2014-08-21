@@ -1,5 +1,7 @@
 package assignment.dao;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -26,8 +28,8 @@ public class CarDaoImpl implements CarDao {
 
 	@Override
 	public List<Car> getCars() {
-		return (List<Car>) carRepository.values();
-		//return Collections.unmodifiableList(carRepository.values());
+		List<Car> carList = new ArrayList<Car>(carRepository.values());
+		return Collections.unmodifiableList(carList);
 	}
 
 	@Override

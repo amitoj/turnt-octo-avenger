@@ -1,7 +1,5 @@
 package assignment.model;
 
-import java.util.Date;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "car")
@@ -11,13 +9,12 @@ public class Car {
 	private String make;
 	private String model;
 	private int yearOfManufacture;
-	private Date entryDate;
+	private String entryDate;
 	
 	public Car() {
 	}
 
-	public Car(int id, String make, String model, int yearOfManufacture,
-			Date entryDate) {
+	public Car(int id, String make, String model, int yearOfManufacture, String entryDate) {
 		super();
 		this.id = id;
 		this.make = make;
@@ -58,11 +55,11 @@ public class Car {
 		this.yearOfManufacture = yearOfManufacture;
 	}
 
-	public Date getEntryDate() {
+	public String getEntryDate() {
 		return entryDate;
 	}
 
-	public void setEntryDate(Date entryDate) {
+	public void setEntryDate(String entryDate) {
 		this.entryDate = entryDate;
 	}
 
@@ -109,6 +106,5 @@ public class Car {
 			return false;
 		return true;
 	}
-
 
 }

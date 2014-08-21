@@ -1,6 +1,5 @@
 package assignment.service;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -29,13 +28,13 @@ public class CarService {
 	 * Add Car
 	 * */
 	@POST
-	@Path("car/{id}")
+	@Path("/car/{id}")
 	public Response createCar(
 			@PathParam("id") int id,
 			@FormParam("make") String make,
 			@FormParam("model") String model,
 			@FormParam("yearOfManufacture") int yearOfManufacture,
-			@FormParam("entryDate") Date entryDate) {
+			@FormParam("entryDate") String entryDate) {
 		
 		Car car = new Car(id, make, model, yearOfManufacture, entryDate);
 		carDao.createCar(car);
@@ -44,7 +43,7 @@ public class CarService {
 	}
 	
 	@GET
-	@Path("car/")
+	@Path("/car")
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<Car> getCarList() {
 		List<Car> carList = carDao.getCars();
@@ -52,7 +51,7 @@ public class CarService {
 	}
 
 	@DELETE
-	@Path("car/{id}")
+	@Path("/car/{id}")
 	public Response removeCar(@PathParam("id") int id) {
 		if (carDao.removeCar(id))
 			return Response.ok().build();
@@ -61,13 +60,13 @@ public class CarService {
 	}
 
 	@PUT
-	@Path("car/{id}")
+	@Path("/car/{id}")
 	public Response updateCar(
 			@PathParam("id") int id,
 			@FormParam("make") String make,
 			@FormParam("model") String model,
 			@FormParam("yearOfManufacture") int yearOfManufacture,
-			@FormParam("entryDate") Date entryDate) {
+			@FormParam("entryDate") String entryDate) {
 		
 		Car updatedCar = new Car(id, make, model, yearOfManufacture, entryDate);
 		if (carDao.updateCar(updatedCar))
